@@ -112,46 +112,30 @@
 // const getRandomElement = <T>(array: T[]): T => {
 //   return array[Math.floor(Math.random() * array.length)];
 // };
-import { Song } from '../types';
-
-// Updated data for artists and song titles with working preview URLs
+// Update the "songs" data with actual mp3 URLs
 const songs = [
   {
     title: 'Shape of You',
     artist: 'Ed Sheeran',
-    previewUrl: 'https://soundcloud.com/edsheeran/shape-of-you'
+    previewUrl: 'https://p.scdn.co/mp3-preview/84462d8e1e4d0f9e5ccd06f0da390f65843774a2' // Example of a preview URL
   },
   {
     title: 'Blinding Lights',
     artist: 'The Weeknd',
-    previewUrl: 'https://soundcloud.com/theweeknd/blinding-lights'
+    previewUrl: 'https://p.scdn.co/mp3-preview/3ebf4ef391b6762d1a4b64745a0c2f572e0d5bfb'
   },
-  {
-    title: 'Bad Guy',
-    artist: 'Billie Eilish',
-    previewUrl: 'https://www.youtube.com/watch?v=DyDfgMOUjCI'
-  },
-  // More songs...
+  // Add the other songs in a similar manner
 ];
 
-const shuffleArray = <T>(array: T[]): T[] => {
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-};
-
-export const generateMockPlaylist = (emotion: string): Song[] => {
+const generateMockPlaylist = (emotion: string): Song[] => {
   const selectedSongs = shuffleArray(songs).slice(0, 10);
+
   return selectedSongs.map((song, index) => ({
     id: `song-${index}-${Date.now()}`,
     title: song.title,
     artist: song.artist,
     duration: `${Math.floor(Math.random() * 4) + 2}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
     albumArt: `https://picsum.photos/seed/${song.artist.replace(/\s+/g, '')}/200`,
-    streamingUrl: song.previewUrl
+    streamingUrl: song.previewUrl // Ensure this is an actual playable audio URL
   }));
 };
-
