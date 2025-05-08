@@ -112,7 +112,6 @@
 // const getRandomElement = <T>(array: T[]): T => {
 //   return array[Math.floor(Math.random() * array.length)];
 // };
-
 import { Song } from '../types';
 
 // Updated data for artists and song titles with working preview URLs
@@ -132,53 +131,8 @@ const songs = [
     artist: 'Billie Eilish',
     previewUrl: 'https://www.youtube.com/watch?v=DyDfgMOUjCI'
   },
-  {
-    title: 'Watermelon Sugar',
-    artist: 'Harry Styles',
-    previewUrl: 'https://www.youtube.com/watch?v=E07s5ZYygMg'
-  },
-  {
-    title: 'drivers license',
-    artist: 'Olivia Rodrigo',
-    previewUrl: 'https://soundcloud.com/oliviarodrigo/drivers-license'
-  },
-  {
-    title: 'Stay',
-    artist: 'The Kid LAROI & Justin Bieber',
-    previewUrl: 'https://www.youtube.com/watch?v=kTJczUoc26U'
-  },
-  {
-    title: 'good 4 u',
-    artist: 'Olivia Rodrigo',
-    previewUrl: 'https://soundcloud.com/oliviarodrigo/good-4-u-1'
-  },
-  {
-    title: 'Levitating',
-    artist: 'Dua Lipa',
-    previewUrl: 'https://soundcloud.com/dualipa/levitating'
-  },
-  {
-    title: 'Save Your Tears',
-    artist: 'The Weeknd',
-    previewUrl: 'https://www.youtube.com/watch?v=XXYlFuWEuKI'
-  },
-  {
-    title: 'Mood',
-    artist: '24kGoldn',
-    previewUrl: 'https://soundcloud.com/24kgoldn/mood-feat-iann-dior'
-  }
+  // More songs...
 ];
-
-const emotionToMoodMap: { [key: string]: string[] } = {
-  happy: ['energetic', 'upbeat', 'cheerful', 'joyful'],
-  sad: ['melancholic', 'emotional', 'heartbreak', 'slow'],
-  energetic: ['upbeat', 'fast', 'dance', 'party'],
-  calm: ['peaceful', 'relaxing', 'ambient', 'soft'],
-  romantic: ['love', 'slow', 'emotional', 'passionate'],
-  nostalgic: ['retro', 'classic', 'memories', 'throwback'],
-  focus: ['instrumental', 'ambient', 'study', 'concentration'],
-  party: ['dance', 'upbeat', 'energetic', 'fun']
-};
 
 const shuffleArray = <T>(array: T[]): T[] => {
   const shuffled = [...array];
@@ -201,24 +155,3 @@ export const generateMockPlaylist = (emotion: string): Song[] => {
   }));
 };
 
-export const generateMockPlaylistName = (emotion: string): string => {
-  const lowerEmotion = emotion.toLowerCase();
-
-  const prefixes = ['Vibes of', 'Feeling', 'Moments of', 'Days of', 'Into the', 'Echoes of', 'Waves of'];
-  const suffixes = ['Journey', 'Escape', 'Reflection', 'Experience', 'Playlist', 'Collection', 'Mix'];
-
-  let emotionWord = lowerEmotion.charAt(0).toUpperCase() + lowerEmotion.slice(1);
-
-  const randomChoice = Math.floor(Math.random() * 3);
-  if (randomChoice === 0) {
-    return `${getRandomElement(prefixes)} ${emotionWord}`;
-  } else if (randomChoice === 1) {
-    return `${emotionWord} ${getRandomElement(suffixes)}`;
-  } else {
-    return `${emotionWord} ${getRandomElement(prefixes).toLowerCase()} ${getRandomElement(suffixes).toLowerCase()}`;
-  }
-};
-
-const getRandomElement = <T>(array: T[]): T => {
-  return array[Math.floor(Math.random() * array.length)];
-};
